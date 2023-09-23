@@ -1,5 +1,6 @@
 <script>
     import FeedbackList from "./components/FeedbackList.svelte";
+    import FeedbackStats from "./components/FeedbackStats.svelte";
 
     let feedbacks = [
         {
@@ -19,6 +20,9 @@
         }
     ];
 
+    $: count = feedbacks.length;
+    $: average = feedbacks.reduce((a,{rating}) => a + rating, 0) / feedbacks.length;
+
     const deleteHandler = (event) => {
         console.log("event", event);
         const updatedFeedbacks = feedbacks.filter((fb) => fb.id!=event.detail.id)
@@ -27,5 +31,6 @@
 </script>
 
 <div class="container">
+    <FeedbackStats {count} {average}/>
     <FeedbackList {feedbacks} on:delete-handler={(event) => deleteHandler(event)}/>
 </div>

@@ -19,12 +19,13 @@
         }
     ];
 
-    const deleteHandler = (id) => {
-        const updatedFeedbacks = feedbacks.filter((fb) => fb.id!=id)
+    const deleteHandler = (event) => {
+        console.log("event", event);
+        const updatedFeedbacks = feedbacks.filter((fb) => fb.id!=event.detail.id)
         feedbacks = updatedFeedbacks;
     }
 </script>
 
 <div class="container">
-    <FeedbackList {feedbacks} handleDelete={(id) => deleteHandler(id)}/>
+    <FeedbackList {feedbacks} on:delete-handler={(event) => deleteHandler(event)}/>
 </div>

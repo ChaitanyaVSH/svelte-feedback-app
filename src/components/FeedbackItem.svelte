@@ -1,7 +1,15 @@
 <script>
-    import Card from "./Card.svelte"
+    import { createEventDispatcher } from "svelte";
+    import Card from "./Card.svelte";
     export let item;
-    export let handleDelete;
+
+    const dispatch = createEventDispatcher();
+
+    const handleDelete = (id) => {
+        dispatch("delete-handler", {
+            id: id
+        })
+    }
 </script>
 
 <Card>

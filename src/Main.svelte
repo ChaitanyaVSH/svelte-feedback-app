@@ -17,9 +17,14 @@
             rating: 1,
             description: "Worst produt so far from this company, do not use at all."
         }
-    ]
+    ];
+
+    const deleteHandler = (id) => {
+        const updatedFeedbacks = feedbacks.filter((fb) => fb.id!=id)
+        feedbacks = updatedFeedbacks;
+    }
 </script>
 
 <div class="container">
-    <FeedbackList {feedbacks}/>
+    <FeedbackList {feedbacks} handleDelete={(id) => deleteHandler(id)}/>
 </div>

@@ -1,6 +1,7 @@
 <script>
     import Card from "./Card.svelte"
     export let item;
+    export let handleDelete;
 </script>
 
 <Card>
@@ -8,7 +9,7 @@
         {item.rating}
     </div>
 
-    <div class="close">X</div>
+    <button class="close" on:click={() => handleDelete(item.id)}>X</button>
 
     <p class="text">{item.description}</p>
 </Card>
@@ -34,6 +35,9 @@
         top: 10px;
         right: 20px;
         cursor: pointer;
+        background: none;
+        border: none;
+        outline: none;
     }
 
     .close:hover {

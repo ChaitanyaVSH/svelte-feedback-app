@@ -1,4 +1,5 @@
 <script>
+    import FeedbackForm from "./components/FeedbackForm.svelte";
     import FeedbackList from "./components/FeedbackList.svelte";
     import FeedbackStats from "./components/FeedbackStats.svelte";
 
@@ -16,7 +17,7 @@
         {
             id: 2,
             rating: 1,
-            description: "Worst produt so far from this company, do not use at all."
+            description: "Worst product so far from this company, do not use at all."
         }
     ];
 
@@ -31,6 +32,7 @@
 </script>
 
 <div class="container">
+    <FeedbackForm />
     <FeedbackStats {count} {average}/>
     <FeedbackList {feedbacks} on:delete-handler={(event) => deleteHandler(event)}/>
 </div>

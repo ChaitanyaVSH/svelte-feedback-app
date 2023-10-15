@@ -1,7 +1,10 @@
 <script>
+    import { createEventDispatcher } from "svelte";
     import Button from "./Button.svelte";
     import Card from "./Card.svelte";
     import RatingSelect from "./RatingSelect.svelte";
+
+    const dispatch = createEventDispatcher();
 
     let text = ""
     let message = null;
@@ -24,7 +27,12 @@
     }
 
     const handleSubmit = () => {
-        // Implement submit functionality
+        const newItem = {
+            id: Math.random(),
+            rating: rating,
+            description: text,
+        }
+        dispatch("submit-rating", newItem)
     }
 </script>
 

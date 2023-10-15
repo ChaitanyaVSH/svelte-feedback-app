@@ -1,11 +1,17 @@
 <script>
     import Button from "./Button.svelte";
     import Card from "./Card.svelte";
+    import RatingSelect from "./RatingSelect.svelte";
 
     let text = ""
     let message = null;
     let min = 10;
+    let rating = 10;
     let btnDisabled = true;
+
+    const handleSelect = (event) => {
+        rating = event.detail;
+    }
 
     const handleInput = () => {
         if(text.trim().length <= min) {
@@ -16,13 +22,18 @@
             btnDisabled = false
         }
     }
+
+    const handleSubmit = () => {
+        // Implement submit functionality
+    }
 </script>
 
 <Card>
     <header>
         <h2>How would you rate your service with us ?</h2>
     </header>
-    <form>
+    <RatingSelect on:rating-select={handleSelect}/>
+    <form on:submit|preventDefault={handleSubmit}>
         <div class="input-group">
           <input type="text" on:input={handleInput} bind:value={text} placeholder="Tell us something that keeps you coming back">
           <Button disabled={btnDisabled} type="submit">Send</Button>

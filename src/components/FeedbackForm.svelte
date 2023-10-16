@@ -31,7 +31,8 @@
             id: Math.random(),
             rating: rating,
             description: text,
-        }
+        };
+        text = "";
         dispatch("submit-rating", newItem)
     }
 </script>

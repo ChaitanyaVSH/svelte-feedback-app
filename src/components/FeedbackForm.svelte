@@ -1,10 +1,8 @@
 <script>
-    import { createEventDispatcher } from "svelte";
+    import { FeedbackStore } from "../stores/feedbacksStore";
     import Button from "./Button.svelte";
     import Card from "./Card.svelte";
     import RatingSelect from "./RatingSelect.svelte";
-
-    const dispatch = createEventDispatcher();
 
     let text = ""
     let message = null;
@@ -33,7 +31,9 @@
             description: text,
         };
         text = "";
-        dispatch("submit-rating", newItem)
+        FeedbackStore.update((feedbacks) => {
+          return [newItem, ...feedbacks];
+        })
     }
 </script>
 

@@ -3,10 +3,10 @@
     import FeedbackList from "./components/FeedbackList.svelte";
     import FeedbackStats from "./components/FeedbackStats.svelte";
 
-    const submitRating = (event) => {
-        const updatedFeedbacks = [...feedbacks, event.detail]
-        feedbacks = updatedFeedbacks;
-    }
+    // const submitRating = (event) => {
+    //     const updatedFeedbacks = [...feedbacks, event.detail]
+    //     feedbacks = updatedFeedbacks;
+    // }
 
     // const deleteHandler = (event) => {
     //     console.log("event", event);
@@ -16,7 +16,7 @@
 </script>
 
 <div class="container">
-    <FeedbackForm on:submit-rating={submitRating}/>
+    <FeedbackForm />
     <FeedbackStats />
     <FeedbackList />
 </div>

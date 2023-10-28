@@ -20,6 +20,6 @@
         in:scale
         out:fade={{ delay: 0, duration: 300}}
     >
-        <FeedbackItem item={feedback} on:delete-handler/>
+        <FeedbackItem item={feedback} />
     </div>
 {/each}

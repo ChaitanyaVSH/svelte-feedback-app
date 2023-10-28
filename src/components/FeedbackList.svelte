@@ -3,19 +3,19 @@
     import { fade, scale } from 'svelte/transition';
     import { FeedbackStore } from "../stores/feedbacksStore";
     import FeedbackItem from "./FeedbackItem.svelte";
-    let feedbacks = [];
-    let unsubscribe = () => {}
+    // let feedbacks = [];
+    // let unsubscribe = () => {}
 
-    onMount(() => {
-        unsubscribe = FeedbackStore.subscribe((data) => feedbacks = data);
-    })
+    // onMount(() => {
+    //     unsubscribe = FeedbackStore.subscribe((data) => feedbacks = data);
+    // })
 
-    onDestroy(() => {
-        unsubscribe();
-    });
+    // onDestroy(() => {
+    //     unsubscribe();
+    // });
 </script>
 
-{#each feedbacks as feedback (feedback.id)}
+{#each $FeedbackStore as feedback (feedback.id)}
     <div
         in:scale
         out:fade={{ delay: 0, duration: 300}}

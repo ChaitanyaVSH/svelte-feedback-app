@@ -1,7 +1,12 @@
 <script>
     import { fade, scale } from 'svelte/transition';
+    import { FeedbackStore } from "../stores/feedbacksStore";
     import FeedbackItem from "./FeedbackItem.svelte";
-    export let feedbacks = [];
+    let feedbacks = [];
+
+    FeedbackStore.subscribe((data) => {
+        feedbacks = data
+    })
 </script>
 
 {#each feedbacks as feedback (feedback.id)}

@@ -21,9 +21,6 @@
         }
     ];
 
-    $: count = feedbacks.length;
-    $: average = feedbacks.reduce((a,{rating}) => a + rating, 0) / feedbacks.length;
-
     const submitRating = (event) => {
         const updatedFeedbacks = [...feedbacks, event.detail]
         feedbacks = updatedFeedbacks;
@@ -38,6 +35,6 @@
 
 <div class="container">
     <FeedbackForm on:submit-rating={submitRating}/>
-    <FeedbackStats {count} {average}/>
-    <FeedbackList {feedbacks} on:delete-handler={(event) => deleteHandler(event)}/>
+    <FeedbackStats />
+    <FeedbackList on:delete-handler={(event) => deleteHandler(event)}/>
 </div>

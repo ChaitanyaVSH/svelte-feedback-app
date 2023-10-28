@@ -1,12 +1,18 @@
 <script>
+    import { onMount, onDestroy } from 'svelte';
     import { fade, scale } from 'svelte/transition';
     import { FeedbackStore } from "../stores/feedbacksStore";
     import FeedbackItem from "./FeedbackItem.svelte";
     let feedbacks = [];
+    let unsubscribe = () => {}
 
-    FeedbackStore.subscribe((data) => {
-        feedbacks = data
+    onMount(() => {
+        unsubscribe = FeedbackStore.subscribe((data) => feedbacks = data);
     })
+
+    onDestroy(() => {
+        unsubscribe();
+    });
 </script>
 
 {#each feedbacks as feedback (feedback.id)}
